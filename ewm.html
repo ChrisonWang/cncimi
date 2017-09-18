@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>二维码</title>
+<script type="text/javascript" src="/templates/default/js/jquery.js"></script>
+<script type="text/javascript" src="/templates/default/js/jquery.qrcode.min.js"></script>
+
+<style type="text/css">
+.qrcodeDiv {
+border:1px solid #000000;
+font-size:12px;
+padding:10px;
+position: absolute;
+left: 400px;
+top:100px;
+width: 240px;
+height: 260px;
+}
+.qrcodeDiv_head{
+color: #000000;
+font-size: 14px;
+font-weight: bold;
+height: 16px;
+line-height: 16px;
+position: relative;
+text-align: left;
+}
+.qrcodeDiv_content{
+min-height: 160px;
+min-width: 160px;
+text-align: center;
+padding: 10px;
+}
+.qrcodeDiv_foot{
+color: #666666;
+font-size:12px;
+line-height: 22px;
+text-align: left;
+}
+</style>
+</head>
+
+<body>
+<div class="qrcodeDiv">
+	<div class="qrcodeDiv_head"><span>分享到微信</span></div>
+	<div class="qrcodeDiv_content">
+		<div id="qrcodeCanvas"></div>
+	</div>
+	<div class="qrcodeDiv_foot">
+		用微信扫一扫，点击右上角分享按钮，<br>即可将网页分享给您的微信好友或朋友圈
+	</div>
+</div>
+<!-- <div id="qrcodeCanvas"></div> -->
+ <script>
+             $('#qrcodeCanvas').qrcode({
+                text: GetQueryString("url"),//二维码代表的字符串（本页面的URL）
+                width: 167,//二维码宽度
+                height: 167//二维码高度
+            }); 
+            
+            function GetQueryString(name){
+            	var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            	var r = window.location.search.substr(1).match(reg);
+            	if(r!=null)return  unescape(r[2]); 
+            					return null;
+            }
+          
+        </script>
+
+</body></html>
