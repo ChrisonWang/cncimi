@@ -359,6 +359,32 @@ function GetMgrThumbs($picurl='',$dfurl='templates/images/dfthumb.png')
 	return $str;
 }
 
+/*
+ * 显示二维码
+ *
+ * @access  public
+ * @param   $picurl  string  <img src的值>
+ * @return  $str     string  返回缩略图HTML
+*/
+function GetQRCode($picurl='', $width=150, $height=150)
+{
+    $dfurl='templates/images/dfthumb.png';
+	$str = '<img src="';
+
+	if($picurl != '')
+	{
+		$str .= '../'.$picurl;
+	}
+	else
+	{
+		$str .= $dfurl;
+	}
+
+	$str .= '" width="'.$width.'" height="'.$height.'"/>';
+
+	return $str;
+}
+
 
 /*
  * 获取排列序号

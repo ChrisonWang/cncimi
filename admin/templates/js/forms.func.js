@@ -65,8 +65,6 @@ function CheckAll(value)
 	$("input[type='checkbox'][name^='checkid'][disabled!='true']").attr("checked",value);
 }
 
-
-
 //删除单条提示
 function ConfDel(i)
 {
@@ -78,8 +76,6 @@ function ConfDel(i)
 	if(confirm(tips[i])) return true;
 	else return false;
 }
-
-
 
 //删除选中提示
 function ConfDelAll(i)

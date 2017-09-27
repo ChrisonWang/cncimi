@@ -17,6 +17,8 @@ define('ADMIN_ROOT', preg_replace("/[\/\\\\]{1,}/", '/', substr(ADMIN_INC, 0, -3
 define('ADMIN_TEMP', ADMIN_ROOT.'/templates');
 require_once(ADMIN_ROOT.'/../include/common.inc.php');
 require_once(ADMIN_INC.'/page.class.php');
+require_once(ADMIN_INC.'/wechat.class.php');
+require_once(ADMIN_INC.'/phpqrcode.class.php');
 
 
 //Flash Session传递

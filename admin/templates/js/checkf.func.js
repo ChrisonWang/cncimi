@@ -198,6 +198,30 @@ function cfm_infolm()
 	}
 }
 
+//验证微信活动信息
+function cfm_wechat()
+{
+    var now = (new Date()).valueOf();
+    var start_date = Date.parse($("#start_date").val());
+    var end_date = Date.parse($("#end_date").val())
+    var title = $("#title").val();
+	if(title == "")
+	{
+		alert("请填写活动名称！");
+		$("#title").focus();
+		return false;
+	}
+    if(start_date <= now)
+	{
+		alert("开始时间不能早于当前时间！");
+		return false;
+	}
+    if(start_date >= end_date)
+	{
+		alert("开始时间不能晚于结束时间！");
+		return false;
+	}
+}
 
 //验证广告位
 function cfm_adtype()
@@ -243,6 +267,30 @@ function cfm_admanager()
 
 //验证友情链接
 function cfm_weblink()
+{
+	if($("#classid").val() == "-1")
+	{
+		alert("请选择链接类型！");
+		$("#classid").focus();
+		return false;
+	}
+	if($("#webname").val() == "")
+	{
+		alert("请填写站点名称！");
+		$("#webname").focus();
+		return false;
+	}
+	if($("#linkurl").val() == "")
+	{
+		alert("请填写链接地址！");
+		$("#linkurl").focus();
+		return false;
+	}
+}
+
+
+//验证微信配置
+function cfm_wechat_settings()
 {
 	if($("#classid").val() == "-1")
 	{
