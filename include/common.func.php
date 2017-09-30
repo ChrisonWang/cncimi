@@ -243,6 +243,64 @@ if(!function_exists('GetDateTime'))
 	}
 }
 
+/*
+* 创建唯一ID
+*/
+if(!function_exists('genUnionCode')){
+    function genUnionCode($len = 16, $prefix='')
+    {
+        $chars = 'ABCDEFGHIJKLMNOPQRSTUVWYZ0123456789';
+        $code = $prefix;
+        $length = $len - strlen($prefix);
+        for ($i = 0; $i < $length; $i++) {
+            $code .= $chars[ mt_rand(0, strlen($chars) - 1) ];
+        }
+        return $code;
+    }
+}
+
+/*
+* 返回json
+*/
+if(!function_exists('json_response')){
+    function json_response($data)
+    {
+        header('Content-Type:application/json;charset=utf-8');
+	    exit(json_encode($data));
+    }
+}
+
+/**
+	 * 多维数组排序
+	 * @param array $arr	输入数组
+	 * @param string $field		排序字段
+	 * @param string $type		排序类型 SORT_DESC升序	SORT_DESC降序
+	 * @return array
+	 */
+if(!function_exists('multi_sort')){
+    function multi_sort($arr = array(), $field='', $type = 'SORT_DESC')
+	{
+		if(empty($arr) || empty($field)){
+			return $arr;
+		}
+		$type = ($type != 'SORT_DESC') ? 'SORT_ASC' : 'SORT_DESC';
+		$sort = array(
+			'direction' => $type,
+			'field' => $field
+		);
+		$arrSort = array();
+		foreach($arr AS $uniqid => $row){
+			foreach($row AS $key=>$value){
+				$arrSort[$key][$uniqid] = $value;
+			}
+		}
+		if($sort['direction']){
+			array_multisort($arrSort[$sort['field']], constant($sort['direction']), $arr);
+		}
+
+		return $arr;
+	}
+}
 
 //返回格式化(Y-m-d)的日期
 if(!function_exists('GetDateMk'))

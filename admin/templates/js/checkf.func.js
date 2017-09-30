@@ -211,9 +211,9 @@ function cfm_wechat()
 		$("#title").focus();
 		return false;
 	}
-    if(start_date <= now)
+    if(end_date <= now)
 	{
-		alert("开始时间不能早于当前时间！");
+		alert("结束时间不能早于当前时间！");
 		return false;
 	}
     if(start_date >= end_date)

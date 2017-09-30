@@ -12,24 +12,23 @@ person: Feng
 //初始化参数
 $tbname = '#@__wechat_settings';
 $gourl  = 'wechat.php';
-$action = isset($action) ? $action : '';
-$id = $_POST['id'];
 $AppID = $_POST['AppID'];
 $AppSecret = $_POST['AppSecret'];
+$qr_image = $_POST['qr_image'];
 
 
 //引入操作类
 require_once(ADMIN_INC.'/action.class.php');
 
 //判断更新还是插入
-$r = $dosql->GetOne("SELECT `id` FROM `$tbname` WHERE id=$id");
-$action = !isset($r)||empty($r) ? 'add' : 'update';
+$r = $dosql->GetOne("SELECT `id` FROM `$tbname` LIMIT 0,1");
+$action = (!isset($r['id']) || empty($r['id'])) ? 'add' : 'update';
 
 //添加配置
 if($action == 'add')
 {
-	$sql = "INSERT INTO `$tbname` (`app_id`, `app_secret`) VALUES ('$AppID', '$AppSecret');";
-	if($dosql->ExecNoneQuery($sql))
+	$sql_add = "INSERT INTO `$tbname` (`app_id`, `app_secret`, `qr_image`) VALUES ('$AppID', '$AppSecret', '$qr_image');";
+	if($dosql->ExecNoneQuery($sql_add))
 	{
 		header("location:$gourl");
 		exit();
@@ -38,10 +37,10 @@ if($action == 'add')
 
 
 //修改配置
-else if($action == 'update')
+if($action == 'update')
 {
-	$sql = "UPDATE `$tbname` SET `app_id` = '$AppID', `app_secret` = '$AppSecret' WHERE id=$id";
-	if($dosql->ExecNoneQuery($sql))
+	$sql_update = "UPDATE `$tbname` SET `app_id` = '$AppID', `app_secret` = '$AppSecret', `qr_image` = '$qr_image' WHERE id='".$r['id']."'";
+	if($dosql->ExecNoneQuery($sql_update))
 	{
 		header("location:$gourl");
 		exit();

@@ -25,10 +25,10 @@ $(function(){
 			<td width="5%">ID</td>
 			<td width="15%">封面</td>
 			<td width="20%">活动名称</td>
-			<td width="25%">活动时间</td>
+			<td width="20%">活动时间</td>
 			<td width="10%">状态</td>
 			<td width="10">活动二维码</td>
-			<td width="10%" class="endCol">操作</td>
+			<td width="15%" class="endCol">操作</td>
 		</tr>
 		<?php
         //取出数据
@@ -39,7 +39,7 @@ $(function(){
 			switch($row['status'])
 			{
 				case 'open':
-					$status = '进行中';
+					$status = '开启';
 					break;  
 				case 'close':
 					$status = '关闭';
@@ -57,11 +57,14 @@ $(function(){
 			<td><?php echo $status; ?></td>
 			<td><?php echo GetQRCode($row['qr_code'], 100, 100) ?></td>
 			<td class="action endCol">
+				<span>
+                    <a href="wechat_show.php?id=<?php echo $row['id']; ?>">活动状态</a>
+                </span> |
                 <span>
                     <a href="wechat_update.php?id=<?php echo $row['id']; ?>">修改</a>
                 </span> |
                 <span>
-                    <a href="wechat_save.php?action=del&id=<?php echo $row['id']; ?>" onclick="ConfDel(0)">删除</a>
+                    <a href="wechat_save.php?action=del&id=<?php echo $row['id']; ?>" onclick="return ConfActivityDel()">删除</a>
                 </span>
             </td>
 		</tr>

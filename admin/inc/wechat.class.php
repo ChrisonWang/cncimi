@@ -17,7 +17,7 @@ class Wechat
      */
     public function genUnionCode($len = 16, $prefix='')
     {
-        $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $chars = 'ABCDEFGHIJKLMNOPQRSTUVWYZ0123456789';
         $code = $prefix;
         $length = $len - strlen($prefix);
         for ($i = 0; $i < $length; $i++) {
@@ -26,16 +26,17 @@ class Wechat
         return $code;
     }
 
-    public function qrcode($url, $code, $errorCorrectionLevel='M', $matrixPointSize='6')
+    public function qrcode($url, $code, $errorCorrectionLevel='M', $matrixPointSize='6', $inter_image='')
     {
         $path = 'uploads/qrcode/'.date('Ymd', time()).'/';
+        //$path = 'uploads/image/'.date('Ymd', time()).'/';
         if (!file_exists('../'.$path)){
             mkdir('../'.$path);
         }
         $native_photo = '../'.$path.$code.'.png';
         QRcode::png($url, $native_photo, $errorCorrectionLevel, $matrixPointSize, 2);
         $QR = imagecreatefromstring(file_get_contents($native_photo));
-        $logo = './templates/images/dfthumb.png';    //准备好的logo图片
+        $logo = empty($inter_image) ? './templates/images/dfthumb.png' : '../'.$inter_image;    //准备好的logo图片
 
         if ($logo !== FALSE) {
             $logo = imagecreatefromstring(file_get_contents($logo));

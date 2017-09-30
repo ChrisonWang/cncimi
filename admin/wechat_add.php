@@ -26,6 +26,28 @@
             </td>
 		</tr>
 		<tr>
+			<td height="40" align="right">我在参加（副标题）：</td>
+			<td>
+                <input type="text" name="description" id="description" class="input" />
+            </td>
+		</tr>
+		<tr>
+			<td height="40" align="right">文章链接（查看更多）：</td>
+			<td>
+                <input type="text" name="article_link" id="article_link" class="input" />
+            </td>
+		</tr>
+		<tr>
+			<td height="40" align="right">封面图：</td>
+			<td>
+                <input type="text" name="thumb" id="thumb" class="input" />
+				<span class="cnote">
+                    <span class="grayBtn" onclick="GetUploadify('uploadify','缩略图上传','image','image',1,<?php echo $cfg_max_file_size; ?>,'thumb')">上 传</span>
+                    <span class="cutPicTxt"><a href="javascript:;" onclick="GetJcrop('jcrop','thumb');return false;">裁剪</a></span>
+                </span>
+            </td>
+		</tr>
+        <tr>
 			<td height="40" align="right">活动起止时间：</td>
 			<td>
                 <input name="start_date" type="text" id="start_date" class="inputms" value="<?php echo GetDateTime(time()); ?>" readonly="readonly" />
@@ -45,16 +67,6 @@
 					timeFormat     :    "24"
 				});
 				</script>
-            </td>
-		</tr>
-		<tr>
-			<td height="40" align="right">封面图：</td>
-			<td>
-                <input type="text" name="thumb" id="thumb" class="input" />
-				<span class="cnote">
-                    <span class="grayBtn" onclick="GetUploadify('uploadify','缩略图上传','image','image',1,<?php echo $cfg_max_file_size; ?>,'thumb')">上 传</span>
-                    <span class="cutPicTxt"><a href="javascript:;" onclick="GetJcrop('jcrop','thumb');return false;">裁剪</a></span>
-                </span>
             </td>
 		</tr>
 

@@ -320,6 +320,10 @@ input[type="button"]:focus,input[type="submit"]:focus{outline:none;}
 .formTable .cnote{margin-left:20px;color:#bfbfbf;}
 .formTable .line{height:3px;background:#f5f5f5;_font-size:0;}
 
+/* 排序表格 */
+.rank_table{border: 0}
+.rank_table th{border: 1px solid #efefef;}
+.rank_table td{border: 1px solid #efefef;}
 
 /*网站信息配置*/
 .formTable .siteSetTag{color:#999;}

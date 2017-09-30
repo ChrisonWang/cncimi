@@ -77,6 +77,19 @@ function ConfDel(i)
 	else return false;
 }
 
+//删除活动提示
+function ConfActivityDel()
+{
+	var notice = "确定要删除这个活动吗？所有活动信息和点赞信息都会被删除！";
+    var c = confirm(notice);
+	if(c == false) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
 //删除选中提示
 function ConfDelAll(i)
 {
