@@ -114,7 +114,7 @@
 <div class="box">
 <!--我在参加-->
 <div class="box_item join">
-    <div class="box_title">我在参加</div>
+    <div class="box_title">我想参加</div>
     <div class="box_body">
         <?php echo $activity_info['description']?>
         <img class="join_pic" src="<?php echo $activity_info['thumb']?>">

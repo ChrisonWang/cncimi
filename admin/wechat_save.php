@@ -26,6 +26,8 @@ $thumb = $_POST['thumb'];
 $content = $_POST['content'];
 $detail = $_POST['detail'];
 $agenda = $_POST['agenda'];
+$lthc = $_POST['lthc'];
+$wjhg = $_POST['wjhg'];
 $now = date('Y-m-d H:i:s', time());
 
 
@@ -41,8 +43,8 @@ if($action == 'add')
     $qrcode = $wechatClass->qrcode('http://www.cncipi.org/activity.php?aid='.$code, $code, 'L', 12, $inter_image);
     $a_link = 'http://www.cncipi.org/activity.php?aid='.$code;
     //存数据
-	$sql = "INSERT INTO `$tbname` (`title`, `description`, `article_link`, `status`, `activity_code`, `activity_link`, `start_date`, `end_date`, `thumb`, `content`, `detail`, `agenda`, `qr_code`, `create_date`, `update_date`)
-VALUES ('$title', '$description', '$article_link', '$status', '$code', '$a_link', '$start_date', '$end_date', '$thumb', '$content', '$detail', '$agenda', '$qrcode', '$now', '$now')";
+	$sql = "INSERT INTO `$tbname` (`title`, `description`, `article_link`, `status`, `activity_code`, `activity_link`, `start_date`, `end_date`, `thumb`, `content`, `detail`, `agenda`, `lthc`, `wjhg`, `qr_code`, `create_date`, `update_date`)
+VALUES ('$title', '$description', '$article_link', '$status', '$code', '$a_link', '$start_date', '$end_date', '$thumb', '$content', '$detail', '$agenda', '$lthc', '$wjhg', '$qrcode', '$now', '$now')";
 
 	if($dosql->ExecNoneQuery($sql))
 	{
@@ -54,7 +56,7 @@ VALUES ('$title', '$description', '$article_link', '$status', '$code', '$a_link'
 //修改列表信息
 else if($action == 'update')
 {
-	$sql = "UPDATE `$tbname` SET `title`='$title', `description`='$description', `article_link`='$article_link', `status`='$status', `start_date`='$start_date', `end_date`='$end_date', `thumb`='$thumb', `content`='$content', `detail`='$detail', `agenda`='$agenda', `create_date`='$now', `update_date`='$now' WHERE `id`=$id";
+	$sql = "UPDATE `$tbname` SET `title`='$title', `description`='$description', `article_link`='$article_link', `status`='$status', `start_date`='$start_date', `end_date`='$end_date', `thumb`='$thumb', `content`='$content', `detail`='$detail', `agenda`='$agenda', `lthc`='$lthc', `wjhg`='$wjhg', `create_date`='$now', `update_date`='$now' WHERE `id`=$id";
 	if($dosql->ExecNoneQuery($sql))
 	{
 		header("location:$gourl");

@@ -30,7 +30,7 @@ $row = $dosql->GetOne("SELECT * FROM `#@__wechat` WHERE `id`=$id");
             </td>
 		</tr>
 		<tr>
-			<td height="40" align="right">我在参加（副标题）：</td>
+			<td height="40" align="right">我想参加（副标题）：</td>
 			<td>
                 <input type="text" name="description" id="description" class="input" value="<?php echo $row['description']?>"/>
             </td>
@@ -101,10 +101,24 @@ $row = $dosql->GetOne("SELECT * FROM `#@__wechat` WHERE `id`=$id");
                 <textarea name="agenda" id="agenda" class="kindeditor"><?php echo $row['agenda']?></textarea>
             </td>
 		</tr>
+		<tr>
+			<td height="340" align="right">论坛会场：</td>
+			<td>
+                <textarea name="lthc" id="lthc" class="kindeditor"><?php echo $row['lthc']?></textarea>
+            </td>
+		</tr>
+		<tr>
+			<td height="340" align="right">往届回顾：</td>
+			<td>
+                <textarea name="wjhg" id="wjhg" class="kindeditor"><?php echo $row['wjhg']?></textarea>
+            </td>
+		</tr>
         <script>
 			var editor_content;
 			var editor_detail;
 			var editor_agenda;
+			var editor_lthc;
+			var editor_wjhg;
 			KindEditor.ready(function(K) {
 				editor_content = K.create('textarea[name="content"]', {
 					allowFileManager : true,
@@ -123,6 +137,22 @@ $row = $dosql->GetOne("SELECT * FROM `#@__wechat` WHERE `id`=$id");
 					}
 				});
                 editor_agenda = K.create('textarea[name="agenda"]', {
+					allowFileManager : true,
+					width:'667px',
+					height:'280px',
+					extraFileUploadParams : {
+						sessionid :  '<?php echo session_id(); ?>'
+					}
+				});
+				editor_lthc = K.create('textarea[name="lthc"]', {
+					allowFileManager : true,
+					width:'667px',
+					height:'280px',
+					extraFileUploadParams : {
+						sessionid :  '<?php echo session_id(); ?>'
+					}
+				});
+				editor_wjhg = K.create('textarea[name="wjhg"]', {
 					allowFileManager : true,
 					width:'667px',
 					height:'280px',
